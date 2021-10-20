@@ -9,7 +9,6 @@ import UIKit
 import Kingfisher
 
 class FriendsTableViewCell: UITableViewCell {
-    
     @IBOutlet weak var friendsNameLabelCell: UILabel!
     @IBOutlet weak var friendsAvatarImageCell: UIImageView!
     
@@ -31,13 +30,13 @@ class FriendsTableViewCell: UITableViewCell {
                 UIView.addKeyframe(withRelativeStartTime: 0,
                                    relativeDuration: 0.5,
                                    animations: {
-                                    self.friendsAvatarImageCell.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
-                                   })
+                    self.friendsAvatarImageCell.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
+                })
                 UIView.addKeyframe(withRelativeStartTime: 0.5,
                                    relativeDuration: 0.6,
                                    animations: {
-                                    self.friendsAvatarImageCell.transform = .identity
-                                   })
+                    self.friendsAvatarImageCell.transform = .identity
+                })
             })
     }
     

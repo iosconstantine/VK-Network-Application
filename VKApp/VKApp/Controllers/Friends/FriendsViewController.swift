@@ -8,7 +8,6 @@
 import UIKit
 
 class FriendsViewController: UIViewController {
-    
     @IBOutlet weak var tableView: UITableView!
     
     private let storage: FriendsStorage = FriendsStorage()
@@ -119,5 +118,3 @@ extension FriendsViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
 }
-
-

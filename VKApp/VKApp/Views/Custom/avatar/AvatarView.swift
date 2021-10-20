@@ -8,7 +8,6 @@
 import UIKit
 
 class AvatarView: UIImageView {
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         setLayout()

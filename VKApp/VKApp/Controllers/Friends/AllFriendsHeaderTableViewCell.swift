@@ -8,17 +8,6 @@
 import UIKit
 
 class AllFriendsHeaderTableViewCell: UITableViewHeaderFooterView {
-    
-    /*
-     переменные
-     static
-     внешние
-     приватные
-     
-     методы жизненного цикла
-     открытые функции
-     приватные функции
-     */
     static let identifier = "AllFriendsHeaderTableViewCell"
     
     private let label: UILabel = {

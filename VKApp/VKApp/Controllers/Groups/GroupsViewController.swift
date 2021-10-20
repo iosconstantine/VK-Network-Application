@@ -8,14 +8,9 @@
 import UIKit
 
 class GroupsViewController: UIViewController {
-    
     @IBOutlet weak var tableView: UITableView!
     private let networkAlamofie = NetworkServiceAlamofire()
-    var groups = [MyGroups]() {
-        didSet {
-            print(oldValue)
-        }
-    }
+    var groups = [MyGroups]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,7 +62,6 @@ class GroupsViewController: UIViewController {
 }
 //MARK: - UITableViewDelegate, UITableViewDataSource
 extension GroupsViewController: UITableViewDelegate, UITableViewDataSource {
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return groups.count
     }

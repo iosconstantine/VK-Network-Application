@@ -34,7 +34,7 @@ enum PhotosRouter: URLRequestConvertible {
             "extended": "1",
             "photo_sizes": "1",
             "access_token": Session.shared.token,
-             "v": String(Session.shared.versionApi)]
+            "v": String(Session.shared.versionApi)]
         }
     }
     

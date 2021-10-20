@@ -8,12 +8,13 @@
 import UIKit
 
 class FriendsPhotosViewController: UIViewController {
-    
     @IBOutlet weak var collectionView: UICollectionView!
+    
     var userNameFromOtherView = String() // сюда по тапу будет приходить имя нажатой ячейки
     let networkService = NetworkServiceAlamofire()
     var photos = [Photos]()
     var ownerId = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.delegate = self
@@ -31,7 +32,6 @@ class FriendsPhotosViewController: UIViewController {
     
     }
     
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if  segue.identifier == "toPresenter",
             let destination = segue.destination as? PresenterViewController
@@ -42,20 +42,14 @@ class FriendsPhotosViewController: UIViewController {
         }
     }
 }
-
-extension FriendsPhotosViewController: UICollectionViewDelegate {
-    
-}
-
-extension FriendsPhotosViewController: UICollectionViewDataSource {
+//MARK: - UICollectionViewDataSource, UICollectionViewDelegate
+extension FriendsPhotosViewController: UICollectionViewDataSource, UICollectionViewDelegate  {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return photos.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FriendsPhotosViewCell.identifier, for: indexPath) as! FriendsPhotosViewCell
-       
-    
         let photo = photos[indexPath.item]
         cell.configure(photo)
 //        cell.likeTapped = { [weak self] isLike in
@@ -64,8 +58,6 @@ extension FriendsPhotosViewController: UICollectionViewDataSource {
 //
         return cell
     }
-    
-
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         
@@ -80,4 +72,3 @@ extension FriendsPhotosViewController: UICollectionViewDataSource {
         }
     }
 }
-

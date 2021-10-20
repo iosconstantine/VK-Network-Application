@@ -30,4 +30,3 @@ class Users: Decodable {
         self.avatarURL = try values.decode(String.self, forKey: .avatarURL)
     }
 }
-

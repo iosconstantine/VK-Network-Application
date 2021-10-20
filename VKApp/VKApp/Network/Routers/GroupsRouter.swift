@@ -42,19 +42,19 @@ enum GroupsRouter: URLRequestConvertible {
             "extended": "1",
             "fields": "description",
             "access_token": Session.shared.token,
-             "v": String(Session.shared.versionApi)]
+            "v": String(Session.shared.versionApi)]
         case .searchGroups(let name): return [
             "q" : name,
             "access_token": Session.shared.token,
-             "v": String(Session.shared.versionApi)]
+            "v": String(Session.shared.versionApi)]
         case .joinGroup(let id): return [
             "group_id" : id,
             "access_token": Session.shared.token,
-             "v": String(Session.shared.versionApi)]
+            "v": String(Session.shared.versionApi)]
         case .leaveGroup(let id): return [
             "group_id" : id,
             "access_token": Session.shared.token,
-             "v": String(Session.shared.versionApi)]
+            "v": String(Session.shared.versionApi)]
         }
     }
     

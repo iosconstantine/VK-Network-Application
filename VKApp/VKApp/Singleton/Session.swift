@@ -8,12 +8,10 @@
 import Foundation
 
 class Session {
-   
     static var shared = Session()
     private init(){}
     
     var token: String = ""
     var userId: Int = 0
     let versionApi = 5.131
-
 }
