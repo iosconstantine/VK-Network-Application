@@ -6,22 +6,33 @@
 //
 
 import UIKit
+import RealmSwift
 
 class GroupsViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
+    private let realmNetworkService = RealmNetworkService()
     private let networkAlamofie = NetworkServiceAlamofire()
     var groups = [MyGroups]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        getRealmGroups()
         tableView.delegate = self
         tableView.dataSource = self
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        getGroups()
+    private func getRealmGroups() {
+        realmNetworkService.getGroups { [weak self] in
+            guard let self = self else { return }
+            do {
+                let realm = try Realm()
+                let groups = realm.objects(MyGroups.self)
+                self.groups = Array(groups)
+                self.tableView.reloadData()
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
     }
     
     private func getGroups() {
@@ -45,14 +56,11 @@ class GroupsViewController: UIViewController {
         let action = UIContextualAction(style: .destructive, title: "Удалить") { action, view, complition in
             let group = self.groups[indexPath.row]
             print("Название \(group.name)")
-            self.networkAlamofie.leaveGroup(id: group.id) { result in
-                switch result {
-                case .success:
-                    self.groups.remove(at: indexPath.row)
-                    self.tableView.deleteRows(at: [indexPath], with: .fade)
-                    self.tableView.reloadData()
-                case .failure: print("Ошибка")
-                }
+            self.realmNetworkService.leaveGroupRealm(id: group.id) {
+                print("Тут будем делать нотификацию на обновление")
+                self.groups.remove(at: indexPath.row)
+                self.tableView.deleteRows(at: [indexPath], with: .fade)
+                self.tableView.reloadData()
             }
         }
         action.backgroundColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)

@@ -11,7 +11,6 @@ class RealmService {
     func realmWrite<T: Object>(array: [T], completion: () -> Void ) {
         do{
             let realm = try Realm()
-            print(realm.configuration.fileURL)
             let oldValues = realm.objects(T.self)
             try realm.write{
                 realm.delete(oldValues)

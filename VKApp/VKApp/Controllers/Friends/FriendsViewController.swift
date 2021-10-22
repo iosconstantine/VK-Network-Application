@@ -69,7 +69,8 @@ class FriendsViewController: UIViewController {
     }
     
     private func getRealmFriends() {
-        realmNetworkService.getFriends(userId: Session.shared.userId) {
+        realmNetworkService.getFriends(userId: Session.shared.userId) { [weak self] in
+            guard let self = self else { return }
             do {
                 let realm = try Realm()
                 let friends = realm.objects(Users.self).filter("firstName != %@", "DELETED")
