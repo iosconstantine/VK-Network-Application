@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class FriendsViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
@@ -20,10 +21,11 @@ class FriendsViewController: UIViewController {
         }
     }
     private let networkAlamofie = NetworkServiceAlamofire()
+    private let realmNetworkService = RealmNetworkService()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getFriends()
+        getRealmFriends()
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -66,14 +68,15 @@ class FriendsViewController: UIViewController {
         return withoutDublecateLetter.sorted()
     }
     
-    private func getFriends() {
-        networkAlamofie.getFriends(userId: Session.shared.userId) { [weak self] result in
-            guard let self = self else { return }
-            switch result {
-            case .success(let friends):
-                self.friends = friends
+    private func getRealmFriends() {
+        realmNetworkService.getFriends(userId: Session.shared.userId) {
+            do {
+                let realm = try Realm()
+                let friends = realm.objects(Users.self).filter("firstName != %@", "DELETED")
+                self.friends = Array(friends)
                 self.tableView.reloadData()
-            case .failure: print("Случилась ошибка")
+            } catch {
+                print(error.localizedDescription)
             }
         }
     }

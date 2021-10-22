@@ -345,29 +345,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Pnv-t2-V70">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="116" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Pnv-t2-V70">
                                 <rect key="frame" x="0.0" y="56" width="375" height="673"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FriendsTableViewCell" id="rm6-iV-xj2" customClass="FriendsTableViewCell" customModule="VKApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="44.666666030883789" width="375" height="116.33333587646484"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FriendsTableViewCell" rowHeight="116" id="rm6-iV-xj2" customClass="FriendsTableViewCell" customModule="VKApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="44.666666030883789" width="375" height="116"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rm6-iV-xj2" id="wIX-ri-1jF">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="116.33333587646484"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="116"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L9P-yW-7WV">
-                                                    <rect key="frame" x="124" y="48.333333333333336" width="235" height="20.333333333333336"/>
+                                                    <rect key="frame" x="124" y="48" width="235" height="20"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JM2-L8-Sjj" customClass="ShadowView" customModule="VKApp" customModuleProvider="target">
-                                                    <rect key="frame" x="16" y="8.3333333333333357" width="100" height="100"/>
+                                                    <rect key="frame" x="16" y="8" width="100" height="100"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 </view>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uTO-PK-Qld" customClass="AvatarView" customModule="VKApp" customModuleProvider="target">
-                                                    <rect key="frame" x="16" y="8.3333333333333357" width="100" height="100"/>
+                                                    <rect key="frame" x="16" y="8" width="100" height="100"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="100" id="alC-Yd-xOZ"/>
                                                         <constraint firstAttribute="width" constant="100" id="ao3-T0-sHa"/>

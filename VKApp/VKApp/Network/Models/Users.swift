@@ -6,12 +6,13 @@
 //
 
 import Foundation
+import RealmSwift
 
-class Users: Decodable {
-    var firstName: String = ""
-    var id: Int = 0
-    var lastName: String = ""
-    var avatarURL: String = ""
+class Users: Object, Decodable {
+    @Persisted var firstName: String = ""
+    @Persisted var id: Int = 0
+    @Persisted var lastName: String = ""
+    @Persisted var avatarURL: String = ""
     
     enum CodingKeys: String, CodingKey {
         case firstName = "first_name"
