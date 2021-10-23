@@ -46,9 +46,26 @@ class RealmNetworkService {
             }
         }
     }
+    
+    func getGroupNotification() {
+        AF.request(GroupsRouter.getGroups).responseJSON { response in
+            if let error = response.error {
+                print(error.localizedDescription)
+            }
+            
+            guard let data = response.data else { return }
+            
+            do {
+                let groups = try JSONDecoder().decode(Response<MyGroups>.self, from: data).response.items
+                self.realmService.saveData(array: groups)
+                
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+    }
     //FIXME: - Позже в комплишн добавить ответ с сервера GroupActions и обрабатывать уже по нему
-    func leaveGroupRealm(id: Int,
-                         completion: @escaping () -> Void) {
+    func leaveGroupRealm(id: Int) {
         AF.request(GroupsRouter.leaveGroup(id: id)).responseJSON { response in
             if let error = response.error {
                 print(error.localizedDescription)
@@ -60,7 +77,6 @@ class RealmNetworkService {
                 try realm.write {
                     realm.delete(group)
                 }
-                completion()
             } catch {
                 print(error.localizedDescription)
             }

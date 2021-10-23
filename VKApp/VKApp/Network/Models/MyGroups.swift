@@ -28,4 +28,7 @@ class MyGroups: Object, Decodable {
         self.photo = try values.decode(String.self, forKey: .photo)
     }
     
+//    override static func primaryKey() -> String? {
+//            return "id"
+//        }
 }
