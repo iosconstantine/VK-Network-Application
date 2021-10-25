@@ -235,6 +235,7 @@
 			isa = PBXGroup;
 			children = (
 				E012FD3426C37401009B16F9 /* GroupsTableViewCell.swift */,
+				E0FEE0A526BC907B00012AEE /* Main.storyboard */,
 				E0EF51CF26C959010025A24D /* AllGroupsViewCell.swift */,
 			);
 			path = CellGroups;
@@ -290,7 +291,6 @@
 		E031EAC2272031E300C76E03 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				E0FEE0A526BC907B00012AEE /* Main.storyboard */,
 				E0FEE0AA26BC907B00012AEE /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;

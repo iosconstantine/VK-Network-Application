@@ -75,7 +75,7 @@ extension AllGroupsViewController: UITableViewDelegate, UITableViewDataSource {
                         self.alertSuccess(title: "Вы подписались на сообщество", message: nil)
                         let realm = try Realm()
                         try realm.write {
-                            realm.add(group)
+                            realm.add(group, update: .all)
                         }
                     } catch {
                         print(error.localizedDescription)
