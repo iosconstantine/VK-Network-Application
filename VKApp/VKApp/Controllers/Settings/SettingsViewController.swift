@@ -8,8 +8,6 @@
 import UIKit
 
 class SettingsViewController: UIViewController {
-    
-    
     let settingsPicker = SettingsPicker()
     
     @IBOutlet weak var settingsLabel: UILabel!
@@ -29,19 +27,11 @@ class SettingsViewController: UIViewController {
     let gSlider = UISlider()
     let bSlider = UISlider()
     
-    
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setViews()
         setImageAndShadowView()
     }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-    }
-    
     // Добавляем все элементы и устанавливаем констрейнты
     func setViews() {
         view.addSubview(settingsPicker)
@@ -148,7 +138,7 @@ class SettingsViewController: UIViewController {
     
     //по нажатию на пикер обрабатываем логику работы
     @objc private func setSettingsInterface() {
- 
+        
         guard settingsPicker.selectedSettings != nil else {
             return
         }
@@ -174,7 +164,7 @@ class SettingsViewController: UIViewController {
             rSlider.value = Float(arrColor?[0] ?? 0)
             gSlider.value = Float(arrColor?[1] ?? 0)
             bSlider.value = Float(arrColor?[2] ?? 0)
-
+            
         case Settings.shadow:
             labelFirst.text = "Радиус тени"
             labelSecond.text = "Непрозрачность"
@@ -205,7 +195,7 @@ class SettingsViewController: UIViewController {
             SingletonSettings.shared.borderWidth = CGFloat(firstStepper.value)
             SingletonSettings.shared.cornerRadius = CGFloat(secondStepper.value)
             SingletonSettings.shared.borderColor = CGColor(srgbRed: CGFloat(rSlider.value), green: CGFloat(gSlider.value), blue: CGFloat(bSlider.value), alpha: 1)
-          
+            
         case Settings.shadow:
             SingletonSettings.shared.shadowRadius = CGFloat(firstStepper.value)
             SingletonSettings.shared.shadowOpacity = Float(secondStepper.value)
@@ -214,6 +204,4 @@ class SettingsViewController: UIViewController {
         setImageAndShadowView()
         SingletonSettings.shared.notificate()
     }
-
-    
 }

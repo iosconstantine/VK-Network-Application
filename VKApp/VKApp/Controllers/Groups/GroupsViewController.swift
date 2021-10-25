@@ -6,37 +6,49 @@
 //
 
 import UIKit
+import RealmSwift
 
 class GroupsViewController: UIViewController {
-    
     @IBOutlet weak var tableView: UITableView!
+    private let realmNetworkService = RealmNetworkService()
     private let networkAlamofie = NetworkServiceAlamofire()
-    var groups = [MyGroups]() {
-        didSet {
-            print(oldValue)
-        }
-    }
+    var groups = [MyGroups]()
+    var notificationToken: NotificationToken?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        getRealmGroups()
         tableView.delegate = self
         tableView.dataSource = self
+        pairTableAndRealm()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        getGroups()
+    private func pairTableAndRealm() {
+        guard let realm = try? Realm() else { return }
+        let results = realm.objects(MyGroups.self)
+        
+        notificationToken = results.observe { [weak self] (changes: RealmCollectionChange) in
+            guard let tableView = self?.tableView else { return }
+            switch changes {
+            case .initial:
+                tableView.reloadData()
+            case .update:
+                tableView.reloadData()
+            case .error(let error):
+                fatalError("\(error)")
+            }
+        }
     }
     
-    private func getGroups() {
-        networkAlamofie.getGroups() { [weak self] result in
+    private func getRealmGroups() {
+        realmNetworkService.getGroups { [weak self] in
             guard let self = self else { return }
-            switch result {
-            case .success(let groups):
-                self.groups = groups
-                self.tableView.reloadData()
-            case .failure: print("Случилась ошибка")
+            do {
+                let realm = try Realm()
+                let groups = realm.objects(MyGroups.self)
+                self.groups = Array(groups)
+            } catch {
+                print(error.localizedDescription)
             }
         }
     }
@@ -49,15 +61,8 @@ class GroupsViewController: UIViewController {
     func deleteAction(at indexPath: IndexPath) -> UIContextualAction {
         let action = UIContextualAction(style: .destructive, title: "Удалить") { action, view, complition in
             let group = self.groups[indexPath.row]
-            print("Название \(group.name)")
-            self.networkAlamofie.leaveGroup(id: group.id) { result in
-                switch result {
-                case .success:
-                    self.groups.remove(at: indexPath.row)
-                    self.tableView.deleteRows(at: [indexPath], with: .fade)
-                    self.tableView.reloadData()
-                case .failure: print("Ошибка")
-                }
+            self.realmNetworkService.leaveGroupRealm(id: group.id) {
+                self.groups.remove(at: indexPath.row)
             }
         }
         action.backgroundColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
@@ -67,7 +72,6 @@ class GroupsViewController: UIViewController {
 }
 //MARK: - UITableViewDelegate, UITableViewDataSource
 extension GroupsViewController: UITableViewDelegate, UITableViewDataSource {
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return groups.count
     }

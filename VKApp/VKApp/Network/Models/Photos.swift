@@ -46,7 +46,6 @@ class Photos: Decodable {
         
         let likeValues = try values.nestedContainer(keyedBy: LikesKeys.self, forKey: .likes)
         self.count = try likeValues.decode(Int.self, forKey: .count)
-        
     }
 }
 

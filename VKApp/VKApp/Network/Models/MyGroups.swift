@@ -6,11 +6,12 @@
 //
 
 import Foundation
+import RealmSwift
 
-class MyGroups: Decodable {
-    var id: Int = 0
-    var name: String = ""
-    var photo: String = ""
+class MyGroups: Object, Decodable {
+    @Persisted var id: Int = 0
+    @Persisted var name: String = ""
+    @Persisted var photo: String = ""
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -27,4 +28,7 @@ class MyGroups: Decodable {
         self.photo = try values.decode(String.self, forKey: .photo)
     }
     
+    override class func primaryKey() -> String? {
+        return "id"
+    }
 }

@@ -31,10 +31,10 @@ enum FriendsRouter: URLRequestConvertible {
         switch self {
         case .getFriends(let id): return [
             "user_id": String(id),
-             "order": "name",
-             "fields": "sex, bdate, city, country, photo_100, photo_200_orig",
+            "order": "name",
+            "fields": "sex, bdate, city, country, photo_100, photo_200_orig",
             "access_token": Session.shared.token,
-             "v": String(Session.shared.versionApi)]
+            "v": String(Session.shared.versionApi)]
         }
     }
     

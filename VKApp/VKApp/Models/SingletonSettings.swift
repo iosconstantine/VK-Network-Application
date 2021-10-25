@@ -8,7 +8,6 @@
 import UIKit
 
 class SingletonSettings {
-    
     static var shared = SingletonSettings()
 
     private init() {}

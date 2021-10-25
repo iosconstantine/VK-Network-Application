@@ -8,11 +8,9 @@
 import UIKit
 
 class PhotoView: UIImageView {
-    
     override func layoutSubviews() {
         super.layoutSubviews()
         self.layer.cornerRadius = 35
         self.layer.masksToBounds = true
     }
 }
-

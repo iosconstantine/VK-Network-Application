@@ -6,10 +6,12 @@
 //
 
 import UIKit
+import RealmSwift
 
 class AllGroupsViewController: UIViewController {
     var groups = [MyGroups]()
     private let networkService = NetworkServiceAlamofire()
+    private let realmNetworkService = RealmNetworkService()
     private var timer: Timer?
     
     @IBOutlet weak var tableView: UITableView!
@@ -50,7 +52,6 @@ extension AllGroupsViewController: UISearchBarDelegate {
 }
 //MARK: - UITableViewDelegate, UITableViewDataSource
 extension AllGroupsViewController: UITableViewDelegate, UITableViewDataSource {
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return groups.count
@@ -64,13 +65,21 @@ extension AllGroupsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let groupID = groups[indexPath.row].id
-        networkService.addGroup(id: groupID) { [weak self] result in
+        let group = groups[indexPath.row]
+        realmNetworkService.addGroupRealm(id: group.id) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .success(let status):
                 if status.response == 1 {
-                self.alertSuccess(title: "Вы подписались на сообщество", message: nil)
+                    do {
+                        self.alertSuccess(title: "Вы подписались на сообщество", message: nil)
+                        let realm = try Realm()
+                        try realm.write {
+                            realm.add(group, update: .all)
+                        }
+                    } catch {
+                        print(error.localizedDescription)
+                    }
                 }
             case .failure(let error):
                 switch error {
