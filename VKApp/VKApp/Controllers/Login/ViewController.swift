@@ -9,19 +9,20 @@ import UIKit
 
 
 class ViewController: UIViewController {
-    
-
     @IBOutlet weak var buttonOutlet: UIButton!
     @IBOutlet weak var loginTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var passwordButtonSecurity: UIButton!
     
-    
-    @IBAction func buttonAction(_ sender: UIButton) {
+    @IBAction func buttonAction(_ sender: UIButton) {}
+    @IBAction func loginActionTextField(_ sender: UITextField) {}
+    @IBAction func passwordActionTextField(_ sender: UITextField) {}
+    @IBAction func passwordSecurityAction(_ sender: UIButton) {
+        togglePassword()
     }
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        if loginTextField.text == "123" && passwordTextField.text == "123" {
+        if loginTextField.text == "" && passwordTextField.text == "" {
             return true
         } else {
             showAlert(title: "Неверный логин или пароль", message: "Проверьте правильность введенных данных.")
@@ -29,34 +30,14 @@ class ViewController: UIViewController {
         }
     }
     
-    @IBAction func loginActionTextField(_ sender: UITextField) {
-        
-    }
-    
-    
-    @IBAction func passwordActionTextField(_ sender: UITextField) {
-        
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Проверка на работоспособность
-       
-        //network.getPhotos(owner_id: Session.shared.userId ?? 0)
-        //network.getGroups()
-       
-    
         buttonOutlet.layer.cornerRadius = 10 // Закругление углов у кнопки
-        
         // Добавил цвет надписи в Placeholder
         loginTextField.attributedPlaceholder = NSAttributedString(string: "Телефон или Email", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
         passwordTextField.attributedPlaceholder = NSAttributedString(string: "Пароль", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
-        
         passwordButtonSecurity.tintColor = .lightGray
-        
     }
-    
     // Сделал убирание клавиатуры
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
@@ -87,10 +68,5 @@ class ViewController: UIViewController {
             passwordButtonSecurity.setImage(UIImage(systemName: "eye"), for: .normal)
         }
     }
-    
-    @IBAction func passwordSecurityAction(_ sender: UIButton) {
-        togglePassword()
-    }
-    
 }
 

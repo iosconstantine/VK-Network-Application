@@ -30,7 +30,6 @@ class NetworkServiceAlamofire {
                 completion(.success(friends))
             } catch {
                 completion(.failure(.decodeError))
-                print(error)
             }
         }
     }
@@ -126,7 +125,7 @@ class NetworkServiceAlamofire {
     }
     
     func leaveGroup(id: Int,
-                  completion: @escaping (Result<GroupActions, NetworkServiceAlamofireError>) -> Void) {
+                    completion: @escaping (Result<GroupActions, NetworkServiceAlamofireError>) -> Void) {
         AF.request(GroupsRouter.leaveGroup(id: id)).responseJSON { response in
             if let error = response.error {
                 completion(.failure(.serverError))

@@ -8,13 +8,9 @@
 import UIKit
 
 extension UIViewController {
-    
     func alertSuccess(title: String, message: String?) {
-        
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        
         let ok = UIAlertAction(title: "Применить", style: .default)
-        
         alert.addAction(ok)
         
         present(alert, animated: true) {

@@ -8,17 +8,6 @@
 import UIKit
 
 class AllFriendsHeaderTableViewCell: UITableViewHeaderFooterView {
-    
-    /*
-     переменные
-     static
-     внешние
-     приватные
-     
-     методы жизненного цикла
-     открытые функции
-     приватные функции
-     */
     static let identifier = "AllFriendsHeaderTableViewCell"
     
     private let label: UILabel = {
@@ -42,13 +31,14 @@ class AllFriendsHeaderTableViewCell: UITableViewHeaderFooterView {
     
     private func setupViews() {
         contentView.addSubview(label)
-        
+        let labelTopAnchor = label.topAnchor.constraint(equalTo: contentView.topAnchor)
+        labelTopAnchor.priority = UILayoutPriority.init(999)
         NSLayoutConstraint.activate([
-            label.topAnchor.constraint(equalTo: contentView.topAnchor),
+            labelTopAnchor,
             label.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             label.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             label.heightAnchor.constraint(equalToConstant: 30),
-            label.widthAnchor.constraint(equalToConstant: 60),
+            label.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
             label.centerXAnchor.constraint(equalTo: contentView.centerXAnchor)
         ])
     }

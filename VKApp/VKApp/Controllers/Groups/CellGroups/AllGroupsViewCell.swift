@@ -9,9 +9,7 @@ import UIKit
 import Kingfisher
 
 class AllGroupsViewCell: UITableViewCell {
-    
     @IBOutlet weak var groupImageView: UIImageView!
-    
     @IBOutlet weak var groupNameLabel: UILabel!
     
     static let identifier = "AllGroupsViewCell"
@@ -21,6 +19,5 @@ class AllGroupsViewCell: UITableViewCell {
         guard let url = url else { return }
         groupImageView.kf.setImage(with: url)
         groupNameLabel.text = group.name
-        
     }
 }

@@ -14,7 +14,6 @@ class LoginViewController: UIViewController {
             webView.navigationDelegate = self
         }
     }
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +33,6 @@ class LoginViewController: UIViewController {
         let request = URLRequest(url: urlComponents.url!)
         print(request)
         webView.load(request)
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -42,7 +40,7 @@ class LoginViewController: UIViewController {
         
     }
 }
-
+//MARK: - WKNavigationDelegate
 extension LoginViewController: WKNavigationDelegate {
     func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
         
@@ -60,26 +58,25 @@ extension LoginViewController: WKNavigationDelegate {
                 let value = param[1]
                 dict[key] = value
                 return dict
-        }
+            }
         
         let token = params["access_token"]
         let userID = params["user_id"]
-       
+        
         if let token = token, let userID = userID {
             Session.shared.token = token
             Session.shared.userId = Int(userID)!
             
             let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-                       let loginViewController = storyBoard.instantiateViewController(withIdentifier: "LoginViewController") as! ViewController
-                       loginViewController.modalPresentationStyle = .fullScreen
-                       self.present(loginViewController, animated: true, completion: nil)
-                       print("---------------------------------------------------------")
-                       print("Token = ",Session.shared.token)
-                       print("UserID = ",Session.shared.userId)
-                       print("---------------------------------------------------------")
+            let loginViewController = storyBoard.instantiateViewController(withIdentifier: "LoginViewController") as! ViewController
+            loginViewController.modalPresentationStyle = .fullScreen
+            self.present(loginViewController, animated: true, completion: nil)
+            print("---------------------------------------------------------")
+            print("Token = ",Session.shared.token)
+            print("UserID = ",Session.shared.userId)
+            print("---------------------------------------------------------")
         }
         
         decisionHandler(.cancel)
     }
 }
-

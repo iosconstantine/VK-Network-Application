@@ -8,13 +8,10 @@
 import UIKit
 
 class GroupsTableViewCell: UITableViewCell {
-
     @IBOutlet weak var groupsAvatarImageCell: UIImageView!
     @IBOutlet weak var groupsNameLabelCell: UILabel!
     
     static let identifier = "GroupsTableViewCell"
-    
-    
     
     func configure(group: MyGroups) {
         let url = URL(string: group.photo)
