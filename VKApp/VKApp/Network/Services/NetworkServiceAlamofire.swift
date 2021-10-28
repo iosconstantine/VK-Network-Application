@@ -145,7 +145,28 @@ class NetworkServiceAlamofire {
             }
         }
     }
-    
+    //MARK: - Newsfeed methods
+    func getNews(completion: @escaping (Result<FeedResponse, NetworkServiceAlamofireError>) -> Void) {
+        AF.request(NewsfeedRouter.getNews).responseJSON { response in
+            if let error = response.error {
+                completion(.failure(.serverError))
+                print(error)
+            }
+            
+            guard let data = response.data else {
+                completion(.failure(.notData))
+                return
+            }
+            let decoder = JSONDecoder()
+            decoder.keyDecodingStrategy = .convertFromSnakeCase
+            do {
+                let responseServer = try decoder.decode(FeedResponseWrapped.self, from: data).response
+                completion(.success(responseServer))
+            } catch {
+                completion(.failure(.decodeError))
+            }
+        }
+    }
     enum NetworkServiceAlamofireError: Error {
         case decodeError
         case notData

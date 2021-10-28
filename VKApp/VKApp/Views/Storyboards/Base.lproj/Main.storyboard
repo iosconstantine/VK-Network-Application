@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="J8k-zV-aRW">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="J8k-zV-aRW">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -335,7 +335,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TCy-c9-Yje" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2988" y="-1020.4433497536946"/>
+            <point key="canvasLocation" x="2988" y="-1100"/>
         </scene>
         <!--Друзья-->
         <scene sceneID="yrJ-Ot-fSW">
@@ -534,6 +534,7 @@
                     <connections>
                         <segue destination="vgV-CO-8E4" kind="relationship" relationship="viewControllers" id="eNQ-37-dcj"/>
                         <segue destination="U0G-de-OiO" kind="relationship" relationship="viewControllers" id="Y6x-xB-cI0"/>
+                        <segue destination="koT-Ui-3cB" kind="relationship" relationship="viewControllers" id="54a-1Z-sid"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vjc-Lx-Ns8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -559,6 +560,37 @@
             </objects>
             <point key="canvasLocation" x="2045.5999999999999" y="-338.42364532019707"/>
         </scene>
+        <!--Newsfeed View Controller-->
+        <scene sceneID="1Ox-9S-Yv1">
+            <objects>
+                <viewController modalPresentationStyle="fullScreen" id="n4Z-Pa-mLE" customClass="NewsfeedViewController" customModule="VKApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="uLm-9V-7ph">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="YCE-l7-Je6">
+                                <rect key="frame" x="0.0" y="56" width="375" height="673"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="9O1-bO-zTu"/>
+                        <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="9O1-bO-zTu" firstAttribute="trailing" secondItem="YCE-l7-Je6" secondAttribute="trailing" id="HoL-ph-DNc"/>
+                            <constraint firstItem="9O1-bO-zTu" firstAttribute="bottom" secondItem="YCE-l7-Je6" secondAttribute="bottom" id="PNW-1A-vkX"/>
+                            <constraint firstItem="YCE-l7-Je6" firstAttribute="top" secondItem="9O1-bO-zTu" secondAttribute="top" id="cMl-73-hhh"/>
+                            <constraint firstItem="YCE-l7-Je6" firstAttribute="leading" secondItem="9O1-bO-zTu" secondAttribute="leading" id="epe-Tg-V6P"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="TVe-Cy-Pxf"/>
+                    <connections>
+                        <outlet property="tableView" destination="YCE-l7-Je6" id="gBz-rw-sqk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SD5-0m-6Dd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2988" y="1380"/>
+        </scene>
         <!--Сообщества-->
         <scene sceneID="PDK-aJ-TuQ">
             <objects>
@@ -578,17 +610,41 @@
             </objects>
             <point key="canvasLocation" x="2045.5999999999999" y="523.89162561576359"/>
         </scene>
+        <!--Новости-->
+        <scene sceneID="0NU-xh-Acp">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="koT-Ui-3cB" customClass="CustomNavControllerInteractiv" customModule="VKApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Новости" image="newspaper" catalog="system" selectedImage="newspaper.fill" id="yrj-bJ-kUx"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="v0E-AR-R3s">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="n4Z-Pa-mLE" kind="relationship" relationship="rootViewController" id="doB-eH-dag"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fK3-R9-4RH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2046" y="1380"/>
+        </scene>
     </scenes>
     <resources>
         <image name="VK" width="2048" height="2048"/>
         <image name="eye" catalog="system" width="128" height="81"/>
         <image name="gearshape" catalog="system" width="128" height="121"/>
+        <image name="newspaper" catalog="system" width="128" height="111"/>
+        <image name="newspaper.fill" catalog="system" width="128" height="111"/>
         <image name="person.2" catalog="system" width="128" height="81"/>
         <image name="person.2.fill" catalog="system" width="128" height="80"/>
         <image name="person.3" catalog="system" width="128" height="62"/>
         <image name="person.3.fill" catalog="system" width="128" height="61"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="secondarySystemBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

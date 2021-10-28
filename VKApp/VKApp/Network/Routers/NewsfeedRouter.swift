@@ -1,15 +1,15 @@
 //
-//  FriendsRouter.swift
+//  NewsfeedRouter.swift
 //  VKApp
 //
-//  Created by KONSTANTIN TISHCHENKO on 19.10.2021.
+//  Created by KONSTANTIN TISHCHENKO on 28.10.2021.
 //
 
 import Foundation
 import Alamofire
 
-enum FriendsRouter: URLRequestConvertible {
-    case getFriends(id: Int)
+enum NewsfeedRouter: URLRequestConvertible {
+    case getNews
     
     private var baseURL: URL {
         return URL(string: "https://api.vk.com/method")!
@@ -17,22 +17,22 @@ enum FriendsRouter: URLRequestConvertible {
     
     private var method: HTTPMethod {
         switch self {
-        case .getFriends: return .get
+        case .getNews: return .get
         }
     }
     
     private var path: String {
         switch self {
-        case .getFriends: return "/friends.get"
+        case .getNews: return "/newsfeed.get"
         }
     }
     
     private var parameters: Parameters {
         switch self {
-        case .getFriends(let id): return [
-            "user_id": String(id),
-            "order": "name",
-            "fields": "sex, bdate, city, country, photo_100, photo_200_orig",
+        case .getNews: return [
+            "filters": "post, photo",
+            "start_from": "next_from",
+            "count" : 20,
             "access_token": Session.shared.token,
             "v": String(Session.shared.versionApi)]
         }
