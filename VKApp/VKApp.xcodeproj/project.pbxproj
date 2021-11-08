@@ -19,6 +19,10 @@
 		E0099E32272AEA4E00077191 /* NewsfeedTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0099E31272AEA4E00077191 /* NewsfeedTextCell.swift */; };
 		E0099E34272AEA5900077191 /* NewsfeedPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0099E33272AEA5900077191 /* NewsfeedPhotoCell.swift */; };
 		E0099E36272AEA6900077191 /* NewsfeedFooterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0099E35272AEA6900077191 /* NewsfeedFooterCell.swift */; };
+		E0099E3E272C270900077191 /* CollectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0099E3C272C270900077191 /* CollectionTableViewCell.swift */; };
+		E0099E3F272C270900077191 /* CollectionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0099E3D272C270900077191 /* CollectionTableViewCell.xib */; };
+		E0099E42272C279500077191 /* GalleryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0099E40272C279500077191 /* GalleryCollectionViewCell.swift */; };
+		E0099E43272C279500077191 /* GalleryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0099E41272C279500077191 /* GalleryCollectionViewCell.xib */; };
 		E00EF18226F499FE00ABE208 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00EF18126F499FE00ABE208 /* Session.swift */; };
 		E00EF18526F4A96A00ABE208 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00EF18426F4A96A00ABE208 /* LoginViewController.swift */; };
 		E012FD2826C355B2009B16F9 /* GroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E012FD2726C355B2009B16F9 /* GroupsViewController.swift */; };
@@ -82,6 +86,10 @@
 		E0099E31272AEA4E00077191 /* NewsfeedTextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsfeedTextCell.swift; sourceTree = "<group>"; };
 		E0099E33272AEA5900077191 /* NewsfeedPhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsfeedPhotoCell.swift; sourceTree = "<group>"; };
 		E0099E35272AEA6900077191 /* NewsfeedFooterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsfeedFooterCell.swift; sourceTree = "<group>"; };
+		E0099E3C272C270900077191 /* CollectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionTableViewCell.swift; sourceTree = "<group>"; };
+		E0099E3D272C270900077191 /* CollectionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionTableViewCell.xib; sourceTree = "<group>"; };
+		E0099E40272C279500077191 /* GalleryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryCollectionViewCell.swift; sourceTree = "<group>"; };
+		E0099E41272C279500077191 /* GalleryCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GalleryCollectionViewCell.xib; sourceTree = "<group>"; };
 		E00EF18126F499FE00ABE208 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		E00EF18426F4A96A00ABE208 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E012FD2726C355B2009B16F9 /* GroupsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsViewController.swift; sourceTree = "<group>"; };
@@ -186,6 +194,7 @@
 		E0099E25272ADC4200077191 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				E0099E3B272C26C800077191 /* PhotoCell */,
 				E0099E26272ADC4900077191 /* Xib */,
 				E0099E2F272AEA4000077191 /* NewsfeedHeaderCell.swift */,
 				E0099E31272AEA4E00077191 /* NewsfeedTextCell.swift */,
@@ -204,6 +213,17 @@
 				E0099E2D272ADCD000077191 /* NewsfeedFooterCell.xib */,
 			);
 			path = Xib;
+			sourceTree = "<group>";
+		};
+		E0099E3B272C26C800077191 /* PhotoCell */ = {
+			isa = PBXGroup;
+			children = (
+				E0099E3C272C270900077191 /* CollectionTableViewCell.swift */,
+				E0099E40272C279500077191 /* GalleryCollectionViewCell.swift */,
+				E0099E41272C279500077191 /* GalleryCollectionViewCell.xib */,
+				E0099E3D272C270900077191 /* CollectionTableViewCell.xib */,
+			);
+			path = PhotoCell;
 			sourceTree = "<group>";
 		};
 		E00EF18026F499CA00ABE208 /* Singleton */ = {
@@ -562,9 +582,11 @@
 				E0FEE0AC26BC907B00012AEE /* LaunchScreen.storyboard in Resources */,
 				E0099E28272ADC9600077191 /* NewsfeedHeaderCell.xib in Resources */,
 				E0FEE0A926BC907B00012AEE /* Assets.xcassets in Resources */,
+				E0099E3F272C270900077191 /* CollectionTableViewCell.xib in Resources */,
 				E0FEE0A726BC907B00012AEE /* Main.storyboard in Resources */,
 				E0099E2A272ADCA700077191 /* NewsfeedTextCell.xib in Resources */,
 				E0099E2E272ADCD000077191 /* NewsfeedFooterCell.xib in Resources */,
+				E0099E43272C279500077191 /* GalleryCollectionViewCell.xib in Resources */,
 				E0099E2C272ADCBA00077191 /* NewsfeedPhotoCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -643,6 +665,7 @@
 				E08D303526EBA1A0006C8306 /* InteractiveTransition.swift in Sources */,
 				E05C364F26E6741100215082 /* PresenterViewController.swift in Sources */,
 				E0F8B24C27220D9500E0DE52 /* RealmService.swift in Sources */,
+				E0099E3E272C270900077191 /* CollectionTableViewCell.swift in Sources */,
 				E0099E20272971AF00077191 /* NewsfeedViewController.swift in Sources */,
 				E00EF18226F499FE00ABE208 /* Session.swift in Sources */,
 				E077B65A27106AE0007DE09B /* Users.swift in Sources */,
@@ -654,6 +677,7 @@
 				E0099E36272AEA6900077191 /* NewsfeedFooterCell.swift in Sources */,
 				E031EABA271EF38000C76E03 /* AlertSuccess.swift in Sources */,
 				E0FEE0A026BC907B00012AEE /* AppDelegate.swift in Sources */,
+				E0099E42272C279500077191 /* GalleryCollectionViewCell.swift in Sources */,
 				E04B82AD26C995A4007B8C0E /* FriendsPhotosViewController.swift in Sources */,
 				E0F8B2472722076B00E0DE52 /* RealmNetworkService.swift in Sources */,
 				E031EAB7271EE9BF00C76E03 /* GroupActions.swift in Sources */,

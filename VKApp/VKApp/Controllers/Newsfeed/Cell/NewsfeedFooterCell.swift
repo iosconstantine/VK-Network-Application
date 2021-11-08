@@ -39,12 +39,7 @@ class NewsfeedFooterCell: UITableViewCell {
         return stringCount
     }
     
-    func configure(feed: FeedItem) {
-//        likeLabel.text = countFormatter(feed.likes?.count)
-//        commentLabel.text = countFormatter(feed.comments?.count)
-//        shareLabel.text = countFormatter(feed.reposts?.count)
-//        viewsLabel.text = countFormatter(feed.views?.count)
-        
+    func configure(feed: FeedItem) {    
         likeLabel.text = countFormatter(feed.likes?.count)
         commentLabel.text = countFormatter(feed.comments?.count)
         shareLabel.text = countFormatter(feed.reposts?.count)

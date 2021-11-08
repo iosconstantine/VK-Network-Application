@@ -28,5 +28,7 @@ class NewsfeedPhotoCell: UITableViewCell {
         let url = URL(string: image?.scrImage ?? "")
         guard let url = url else { return }
         postImageLabel.kf.setImage(with: url)
+//        postImageLabel.layer.cornerRadius = 20
+//        postImageLabel.clipsToBounds = true
     }
 }
